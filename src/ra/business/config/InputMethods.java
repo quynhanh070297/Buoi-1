@@ -2,24 +2,28 @@ package ra.business.config;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.Scanner;
 
-public class InputMethod
-{
-    /**
-     * <p><b><u}>Description detail</u></b> </p>
-     * <p>getString()       ==>> Return a string value from the user.</p>
-     * <p>getChar()         ==>> Return a character value from the user</p>
-     * <p>getBoolean()	    ==>> Return a boolean value from the user.</p>
-     * <p>getByte()	        ==>> Return a byte value from the user.</p>
-     * <p>getShort()	    ==>> Return a short value from the user.</p>
-     * <p>getInteger()	    ==>> Return a integer value from the user.</p>
-     * <p>getLong()	        ==>> Return a long value from the user.</p>
-     * <p>getFloat()	    ==>> Return a float value from the user.</p>
-     * <p>getDouble()	    ==>> Return a double value from the user.</p>
-     */
+
+
     public final class InputMethods {
+        /**
+         * <p><b><u}>Description detail</u></b> </p>
+         * <p>getString()       ==>> Return a string value from the user.</p>
+         * <p>getChar()         ==>> Return a character value from the user</p>
+         * <p>getBoolean()	    ==>> Return a boolean value from the user.</p>
+         * <p>getByte()	        ==>> Return a byte value from the user.</p>
+         * <p>getShort()	    ==>> Return a short value from the user.</p>
+         * <p>getInteger()	    ==>> Return a integer value from the user.</p>
+         * <p>getLong()	        ==>> Return a long value from the user.</p>
+         * <p>getFloat()	    ==>> Return a float value from the user.</p>
+         * <p>getDouble()	    ==>> Return a double value from the user.</p>
+         */
+        private static final Scanner input = new Scanner(System.in);
         private static final String ERROR_ALERT = "===>> Định dạng không hợp lệ, hoặc ngoài phạm vi! Vui lòng thử lại....";
         private static final String EMPTY_ALERT = "===>> Không được để trống ! Vui lòng nhập lại ...";
         private static final String ERROR_DATE = "===>> Sai định dạng (dd/MM/yyyy) ! Vui lòng nhập lại ...";
@@ -137,7 +141,6 @@ public class InputMethod
          * getInput()  Return any String value from the user.
          */
         private static String getInput() {
-            Scanner input = new Scanner(System.in);
             return input.nextLine();
         }
 
@@ -155,6 +158,19 @@ public class InputMethod
             }
         }
 
+        public static LocalDate getLocalDate(){
+            Scanner sc = new Scanner(System.in);
+            while (true){
+                System.out.println("Nhập vào ngày sinh dd/MM/yyyy");
+                String employeeDateInput = sc.nextLine();
+                try {
+                    return LocalDate.parse(employeeDateInput, DateTimeFormatter.ofPattern(ERROR_DATE));
+                }catch (DateTimeParseException e){
+                    System.err.println("Koong dung dinh dang");
+                }
+            }
+        }
+
         /**
          * pressAnyKey()  Press any key to continue....
          */
@@ -163,4 +179,4 @@ public class InputMethod
         }
         /*========================================Other Method========================================*/
     }
-}
+
