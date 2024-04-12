@@ -1,6 +1,7 @@
 package ra.run.menuUser;
 
 import ra.business.config.InputMethods;
+import ra.business.implement.AdminImplement;
 import ra.business.implement.EmployeeImplement;
 import ra.business.implement.UsersImplement;
 
@@ -9,6 +10,8 @@ public class AdminMenu
 
     public static void adminManager()
     {
+        UsersImplement usersImplement = new UsersImplement() ;
+        AdminImplement adminImplement = new AdminImplement() ;
         boolean isExit = true;
         byte choice;
         do {
@@ -21,10 +24,10 @@ public class AdminMenu
             choice = InputMethods.getByte();
             switch (choice) {
                 case 1:
-                    acountManager();
+                    acountManager(usersImplement);
                     break;
                 case 2:
-                    reportList();
+                    reportList(adminImplement);
                     break;
                 case 3:
                     UsersImplement.logout();
@@ -45,7 +48,7 @@ public class AdminMenu
             }
         } while (isExit);
     }
-    public static void acountManager(){
+    public static void acountManager(UsersImplement usersImplement){
         byte choice;
         do {
             System.out.println("-------------------------- QUẢN TRI TÀI KHOAN ----------------------------");
@@ -57,11 +60,10 @@ public class AdminMenu
             choice = InputMethods.getByte();
             switch (choice) {
                 case 1:
-
+                    usersImplement.register();
                     break;
                 case 2:
-
-
+                    usersImplement.read();
                     break;
                 case 0:
                     System.exit(0);
@@ -72,7 +74,7 @@ public class AdminMenu
             }
         } while (true);
     }
-    public static void reportList(){
+    public static void reportList(AdminImplement adminImplement ){
         byte choice;
         do {
             System.out.println("--------------------------  BÁO CÁO THỐNG KÊ   ----------------------------");
@@ -84,11 +86,16 @@ public class AdminMenu
             choice = InputMethods.getByte();
             switch (choice) {
                 case 1:
-
+                    adminImplement.statisticsCustomers();
                     break;
                 case 2:
-
+                    adminImplement.statisticsContract();
                     break;
+                case 3:
+                    adminImplement.displayProjectByContract();
+                    break;
+                case 4:
+                    return;
                 case 0:
                     System.exit(0);
                     break;

@@ -145,6 +145,9 @@ public class Customer
       this.phoneNumber = InputMethods.getString();
       System.out.println("Moi nhap ghi chu");
       this.note = InputMethods.getString();
+      //Độ ưu tiên của khách hàng bằng độ ưu tiên của dự án.
+      //Mặc định là 1 - Khách hàng tiêm năng
+      this.priority = 1;
    }
 
    public void displayCustomer(){

@@ -140,19 +140,16 @@ public class Employee
         System.out.println("Danh sach phong ban");
        departmentList.forEach(Department::displayDepartment);
         System.out.println("Moi ban nhap id phong ban muon them");
-        boolean check = false;
+
         do
         {
             for (Department department : departmentList)
             {
                 if (InputMethods.getInteger()==department.getDepartmentId()){
-                    check= true;
                     return department.getDepartmentId();
                 }
             }
-            if (!check){
-                System.out.println("Nhap sai moi nhap lai");
-            }
+            System.out.println("Nhap sai moi nhap lai");
         }while (true);
     }
 }

@@ -31,7 +31,6 @@ public class UsersImplement implements IUsers
     // Hàm chọn dùng chung cho tất cả
 
     public static List<Users> userList;
-
     static
     {
 
@@ -88,6 +87,7 @@ public class UsersImplement implements IUsers
             Users user = new Users();
             user.inputUser();
             userList.add(user);
+            IOFile.writeObjectToFile(userList,IOFile.USER_PATH);
         }
     }
 
@@ -111,8 +111,8 @@ public class UsersImplement implements IUsers
                     System.out.println("chọn trường bạn cần sửa \n" +
                             "|1: Tên        |\n" +
                             "|2: Mật khẩu   |\n" +
-//                            "|3: Quyền      |  \n" +
-                            "|4: Trạng thái | \n" +
+                            "|3: Quyền      |\n" +
+                            "|4: Trạng thái |\n" +
                             "|0: Thoát      |");
                     System.out.println("mời bạn chọn");
                     byte choice = InputMethods.getByte();
@@ -125,9 +125,9 @@ public class UsersImplement implements IUsers
                         case 2:
                             finByID(inputIdUpdate).setPassword(InputMethods.getString());
                             break;
-//                        case 3:
-//                            finByID(inputIdUpdate).setRole();
-//                            break;
+                       case 3:
+                           // finByID(inputIdUpdate).setRole();
+                            break;
                         case 4:
                             finByID(inputIdUpdate).setStatus(InputMethods.getBoolean());
                             break;
@@ -140,6 +140,7 @@ public class UsersImplement implements IUsers
                 }
             }
         }
+        IOFile.writeObjectToFile(userList, IOFile.USER_PATH);
     }
 
     @Override
@@ -156,6 +157,7 @@ public class UsersImplement implements IUsers
             } else
             {
                 userList.remove(finByID(IDDelete));
+                IOFile.writeObjectToFile(projectList,IOFile.PATH_PROJECT);
             }
         }
     }
@@ -180,6 +182,7 @@ public class UsersImplement implements IUsers
         IOFile.writeObjectToFile(currentUser, IOFile.CURRENT_USER_PATH);
     }
 
+    // Tao 1 ham xem thong tin hop dong dung chung cho tat ca
     public static void changePassword()
     {
 
@@ -188,60 +191,6 @@ public class UsersImplement implements IUsers
         IOFile.writeObjectToFile(userList, IOFile.USER_PATH);
     }
 
-    // Tao 1 ham xem thong tin hop dong dung chung cho tat ca
-    public static void readContract()
-    {
-        Customer isCustomer = customerList.stream().filter(customer -> customer.getCustomerId()== user.getUserId()).findFirst().orElse(null);
-        if (isCustomer==null){
-            System.out.println("Bạn chưa có hop dong nào, Rất mong được hợp tác trong tương lai");
-        }
-        else{
-        contractList.stream().filter(contract -> contract.getCustomerId() == isCustomer.getCustomerId()).forEach(Contract::displayContract);
 
-        }
-    }
-
-    public static void readProject()
-    {
-        //Xem du an
-        Customer isCustomer = customerList.stream().filter(customer -> customer.getCustomerId()== user.getUserId()).findFirst().orElse(null);
-        if (isCustomer==null){
-            System.out.println("Bạn chưa có dự án nào, Rất mong được hợp tác trong tương lai");
-        }
-        else{
-        List<Contract> listContractCurrent = contractList.stream().filter(contract -> contract.getCustomerId() == isCustomer.getCustomerId()).toList();
-        List<Project> listProjectCurrent = new ArrayList<>();
-        for (Contract contract : listContractCurrent)
-        {
-            listProjectCurrent = projectList.stream().filter(project -> project.getContractId() == contract.getContractId()).toList();
-        }
-        if (listProjectCurrent.isEmpty())
-        {
-            System.out.println("Bạn chưa có dự án nào, Rất mong được hợp tác trong tương lai");
-
-        } else
-        {
-            listProjectCurrent.forEach(Project::displayProject);
-        }
-        }
-    }
-
-    public static void readMyInformation()
-    {
-        //Check xem ID cua user dang dang nhap co o trong danh sach khach hang khong
-        boolean hasContract = customerList.stream().anyMatch(
-                customer -> customer.getCustomerId() == user.getUserId()
-        );
-        if (hasContract)
-        {
-            customerList.stream().filter(
-                    customer -> customer.getCustomerId() == user.getUserId()
-            ).findFirst().orElse(null).displayCustomer();
-            //Xem thong tin
-        } else
-        {
-            System.out.println(" Thông tin trống, Rất mong được hợp tác trong tương lai");
-        }
-    }
 }
 

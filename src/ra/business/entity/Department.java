@@ -58,7 +58,7 @@ public class Department
       this.description = getInputDescription();
    }
    public void displayDepartment(){
-      System.out.println("-------------------------------------------------------------------------------------");
+      System.out.println("----------------------------------------------");
       System.out.printf("|ID : %-3s | Department Name %-15s  |\n",departmentId, departmentName);
    }
 

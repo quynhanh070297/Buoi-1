@@ -3,6 +3,7 @@ package ra.run.menuUser;
 import ra.business.config.InputMethods;
 import ra.business.config.Role;
 import ra.business.entity.Users;
+import ra.business.implement.CustomerImplement;
 import ra.business.implement.UsersImplement;
 import ra.data.IOFile;
 
@@ -20,7 +21,6 @@ public class MainMenu
     static
     {
         currentUser=IOFile.readObjectFromFile(IOFile.CURRENT_USER_PATH);
-
     }
 
     public static void main(String[] args) {
@@ -61,7 +61,7 @@ public class MainMenu
             System.out.println("-------------------LOGIN------------------");
             System.out.println("| Nhap username :");
             String username  = InputMethods.getString();
-            System.out.println("Nhap password :");
+            System.out.println("| Nhap password :");
             String password  = InputMethods.getString();
             Users userLogin = usersImplement.login(username,password);
            if (userLogin==null){
@@ -73,8 +73,7 @@ public class MainMenu
            byte choice = InputMethods.getByte();
             switch (choice){
                case 1:
-                  usersImplement.login(username,password);
-
+                   usersImplement.login(username,password);
                    break;
                case 2:
                    usersImplement.register();
@@ -90,6 +89,7 @@ public class MainMenu
         } while (true);
     }
     public static void checkRoleUser(Users userLogin){
+        CustomerImplement customerImplement = new CustomerImplement();
         if (userLogin.getRole().equals(Role.ROLE_ADMIN)){
             user = userLogin;
             currentUser.add(user);
@@ -102,7 +102,7 @@ public class MainMenu
                 user = userLogin;
                 currentUser.add(user);
                 IOFile.writeObjectToFile(currentUser,IOFile.CURRENT_USER_PATH);
-                UserMenu.userManager();
+                CustomerMenu.customerManager(customerImplement);
             }
         }else {
             user = userLogin;

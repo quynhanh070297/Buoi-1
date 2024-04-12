@@ -3,17 +3,17 @@ package ra.business.implement;
 import ra.business.IGeneric.ICustomer;
 import ra.business.config.InputMethods;
 import ra.business.config.Role;
-import ra.business.entity.Customer;
-import ra.business.entity.Employee;
-import ra.business.entity.Users;
+import ra.business.entity.*;
 import ra.data.IOFile;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static ra.business.implement.ContractImplement.contractList;
+import static ra.business.implement.ProjectImplement.projectList;
 import static ra.business.implement.UsersImplement.choice;
 import static ra.business.implement.UsersImplement.userList;
+import static ra.run.menuUser.MainMenu.user;
 
 public class CustomerImplement implements ICustomer
 {
@@ -228,6 +228,60 @@ public class CustomerImplement implements ICustomer
         }
         if (check){
             System.out.println("Khong tim thay ID muon tim");
+        }
+    }
+    public void readContract()
+    {
+        Customer isCustomer = customerList.stream().filter(customer -> customer.getCustomerId()== user.getUserId()).findFirst().orElse(null);
+        if (isCustomer==null){
+            System.out.println("Bạn chưa có hop dong nào, Rất mong được hợp tác trong tương lai");
+        }
+        else{
+            contractList.stream().filter(contract -> contract.getCustomerId() == isCustomer.getCustomerId()).forEach(Contract::displayContract);
+
+        }
+    }
+
+    public void readProject()
+    {
+        //Xem du an
+        Customer isCustomer = customerList.stream().filter(customer -> customer.getCustomerId()== user.getUserId()).findFirst().orElse(null);
+        if (isCustomer==null){
+            System.out.println("Bạn chưa có dự án nào, Rất mong được hợp tác trong tương lai");
+        }
+        else{
+            List<Contract> listContractCurrent = contractList.stream().filter(contract -> contract.getCustomerId() == isCustomer.getCustomerId()).toList();
+            List<Project> listProjectCurrent = new ArrayList<>();
+            for (Contract contract : listContractCurrent)
+            {
+                listProjectCurrent = projectList.stream().filter(project -> project.getContractId() == contract.getContractId()).toList();
+            }
+            if (listProjectCurrent.isEmpty())
+            {
+                System.out.println("Bạn chưa có dự án nào, Rất mong được hợp tác trong tương lai");
+
+            } else
+            {
+                listProjectCurrent.forEach(Project::displayProject);
+            }
+        }
+    }
+
+    public void readMyInformation()
+    {
+        //Check xem ID cua user dang dang nhap co o trong danh sach khach hang khong
+        boolean hasContract = customerList.stream().anyMatch(
+                customer -> customer.getCustomerId() == user.getUserId()
+        );
+        if (hasContract)
+        {
+            customerList.stream().filter(
+                    customer -> customer.getCustomerId() == user.getUserId()
+            ).findFirst().orElse(null).displayCustomer();
+            //Xem thong tin
+        } else
+        {
+            System.out.println(" Thông tin trống, Rất mong được hợp tác trong tương lai");
         }
     }
 

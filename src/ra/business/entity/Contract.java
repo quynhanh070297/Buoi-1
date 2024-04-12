@@ -5,6 +5,7 @@ import ra.business.implement.CustomerImplement;
 import ra.business.implement.EmployeeImplement;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
 import static ra.business.implement.ContractImplement.contractList;
@@ -148,9 +149,33 @@ public class Contract
         System.out.println("Moi ban nhap mieu ta hop dong");
         this.description = InputMethods.getString();
 
-        this.priority = InputMethods.getByte() ;
+        this.priority = -1;
     }
 
+    public void autoSetPriority()
+    {
+        //Độ ưu tiên khách hàng :
+        // Khách hàng cấp 3 : VIP - 2 khách hàng có tổng tiền dự án lớn nhất
+        // Khách hàng cấp 2 : Triển Vọng - Khách hàng có tổng tiền/ tổng tiền trung bình
+        // Khách hàng cấp 1 : Tiềm năng - Khách còn lại
+        contractList.sort((o1,o2)->Double.compare(o1.getTotalAmount(),o2.getTotalAmount()));
+        // Sắp xếp theo Comparerator => Sort theo tổng tiền.
+        contractList.getLast().setPriority((byte)3);
+        contractList.get(contractList.size()-2).setPriority((byte)3);
+        // Set 2 thằng cuối cùng có độ ưu tiên bằng 3.
+        //Biến Mid là biến ở giữa.
+        int mid = contractList.size()/2;
+        for (int i = 0; i <= contractList.size()-3; i++)
+        {
+            if (i<mid){
+                //nhỏ hơn Mid thì độ ưu tiên bằng 1
+                contractList.get(i).setPriority((byte)1);
+            }else {
+                //Lớn hơn Mid thì độ ưu tiên bằng 2
+                contractList.get(i).setPriority((byte)2);
+            }
+        }
+    }
 
 
     private Integer getInputEmployeeId()
@@ -183,23 +208,20 @@ public class Contract
         }
     }
 
-    @Override
-    public String toString()
-    {
-        return "Contract{" +
-                "contractId=" + contractId +
-                ", contractName='" + contractName + '\'' +
-                ", employeeId=" + employeeId +
-                ", customerId=" + customerId +
-                ", createdDate=" + createdDate +
-                ", expiryDate=" + expiryDate +
-                ", totalAmount=" + totalAmount +
-                ", description='" + description + '\'' +
-                ", priority=" + priority +
-                '}';
-    }
+
     public void  displayContract() {
-        System.out.println(this);
+        System.out.printf("===============Contract===============\n" +
+                        "| Contract ID: %-20d|\n" +
+                        "| Contract Name: %-20s|\n" +
+                        "| Employee ID: %-20d|\n" +
+                        "| Customer ID: %-20d|\n" +
+                        "| Created Date: %-20s|\n" +
+                        "| Expiry Date: %-20s|\n" +
+                        "| Total Amount: %-20f|\n" +
+                        "| Description: %-20s|\n" +
+                        "| Priority: %-20d|\n",
+                contractId, contractName, employeeId, customerId, createdDate,
+                expiryDate, totalAmount, description, priority);
     }
 
     public Integer getInputIdContract(){

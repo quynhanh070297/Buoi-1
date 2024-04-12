@@ -1,11 +1,21 @@
 package ra.run.menuUser;
 
 import ra.business.config.InputMethods;
+import ra.business.entity.Contract;
+import ra.business.implement.ContractImplement;
+import ra.business.implement.CustomerImplement;
+import ra.business.implement.EmployeeImplement;
+import ra.business.implement.ProjectImplement;
 
 public class ManagerMenu
 {
     public static void roleManager()
     {
+        EmployeeImplement employeeImplement = new EmployeeImplement();
+        CustomerImplement customerImplement = new CustomerImplement();
+        ContractImplement contractImplement = new ContractImplement();
+        ProjectImplement projectImplement = new ProjectImplement();
+
         byte choice;
         do {
             System.out.println("-------------------------- MANAGER ----------------------------");
@@ -17,16 +27,16 @@ public class ManagerMenu
             choice = InputMethods.getByte();
             switch (choice) {
                 case 1:
-                    employeeManager();
+                    employeeManager(employeeImplement);
                     break;
                 case 2:
-                    customerManager();
+                    customerManager(customerImplement);
                     break;
                 case 3:
-                    contractManager();
+                    contractManager(contractImplement);
                     break;
                 case 4:
-                    projectManager();
+                    projectManager(projectImplement);
                     break;
                 case 5:
                     return;
@@ -39,7 +49,7 @@ public class ManagerMenu
             }
         } while (true);
     }
-    public static void employeeManager(){
+    public static void employeeManager(EmployeeImplement employeeImplement){
         byte choice;
         do {
             System.out.println("-------------------------- QUẢN LÝ NHÂN VIÊN ----------------------------");
@@ -52,23 +62,22 @@ public class ManagerMenu
             choice = InputMethods.getByte();
             switch (choice) {
                 case 1:
-
+                    employeeImplement.create();
                     break;
                 case 2:
-
+                    employeeImplement.read();
                     break;
                 case 3:
-
+                    employeeImplement.update();
                     break;
                 case 4:
-
+                    employeeImplement.delete();
                     break;
                 case 5:
-
+                    employeeImplement.findEmployeeByName();
                     break;
                 case 6:
-
-                    break;
+                    return;
                 case 0:
                     System.exit(0);
                     break;
@@ -78,7 +87,7 @@ public class ManagerMenu
             }
         } while (true);
     }
-    public static void contractManager(){
+    public static void contractManager(ContractImplement contractImplement){
         byte choice;
         do {
             System.out.println("-------------------------- QUẢN LÝ HỢP ĐỒNG ----------------------------");
@@ -91,23 +100,22 @@ public class ManagerMenu
             choice = InputMethods.getByte();
             switch (choice) {
                 case 1:
-
+                    contractImplement.create();
                     break;
                 case 2:
-
+                    contractImplement.read();
                     break;
                 case 3:
-
+                    contractImplement.update();
                     break;
                 case 4:
-
+                    contractImplement.delete();
                     break;
                 case 5:
-
+                    contractImplement.findContractByName();
                     break;
                 case 6:
-
-                    break;
+                    return;
                 case 0:
                     System.exit(0);
                     break;
@@ -117,7 +125,7 @@ public class ManagerMenu
             }
         } while (true);
     }
-    public static void projectManager(){
+    public static void projectManager(ProjectImplement projectImplement){
         byte choice;
         do
         {
@@ -131,16 +139,16 @@ public class ManagerMenu
             switch (choice)
             {
                 case 1:
-
+                    projectImplement.create();
                     break;
                 case 2:
-
+                    projectImplement.read();
                     break;
                 case 3:
-
+                    projectImplement.update();
                     break;
                 case 4:
-
+                    projectImplement.updateProjectStatus();
                     break;
                 case 5:
                     return;
@@ -153,7 +161,7 @@ public class ManagerMenu
             }
         } while (true);
     }
-    public static void customerManager(){
+    public static void customerManager(CustomerImplement customerImplement){
         byte choice;
         do
         {
@@ -168,23 +176,22 @@ public class ManagerMenu
             switch (choice)
             {
                 case 1:
-
+                    customerImplement.create();
                     break;
                 case 2:
-
+                    customerImplement.read();
                     break;
                 case 3:
-
+                    customerImplement.update();
                     break;
                 case 4:
-
+                    customerImplement.delete();
                     break;
                 case 5:
-
+                    customerImplement.findCustomerByName();
                     break;
                 case 6:
-
-                    break;
+                    return;
                 case 0:
                     System.exit(0);
                     break;
