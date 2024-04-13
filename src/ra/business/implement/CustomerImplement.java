@@ -17,9 +17,11 @@ import static ra.run.menuUser.MainMenu.user;
 
 public class CustomerImplement implements ICustomer
 {
-    public static List<Customer> customerList ;
-    static {
-        customerList= IOFile.readObjectFromFile(IOFile.PATH_CUSTOMER);
+    public static List<Customer> customerList;
+
+    static
+    {
+        customerList = IOFile.readObjectFromFile(IOFile.PATH_CUSTOMER);
     }
 
     @Override
@@ -98,7 +100,7 @@ public class CustomerImplement implements ICustomer
         {
             if (users.getRole() == Role.ROLE_USER)
             {
-                System.out.println("==================================================");
+                System.out.println("======================Danh sách người dùng hiện tại============================");
                 users.displayUser();
             }
         }
@@ -177,28 +179,31 @@ public class CustomerImplement implements ICustomer
                 }
             }
         }
-        IOFile.writeObjectToFile(customerList,IOFile.PATH_CUSTOMER);
+        IOFile.writeObjectToFile(customerList, IOFile.PATH_CUSTOMER);
     }
 
     @Override
     public void delete()
     {
-        boolean isExit= true;
+        boolean isExit = true;
         read();
-        while (isExit){
+        while (isExit)
+        {
             System.out.println("Mời bạn nhập vào ID muốn xóa");
             int idDelete = InputMethods.getInteger();
 
-            if (finByID(idDelete)==null){
+            if (finByID(idDelete) == null)
+            {
                 System.out.println("Id bạn nhập vào chưa đúng");
-            }else {
-                if(contractList.stream().noneMatch(contract -> contract.getCustomerId()==idDelete))
+            } else
+            {
+                if (contractList.stream().noneMatch(contract -> contract.getCustomerId() == idDelete))
                 {
                     customerList.remove(finByID(idDelete));
-                    IOFile.writeObjectToFile(customerList,IOFile.PATH_CUSTOMER);
+                    IOFile.writeObjectToFile(customerList, IOFile.PATH_CUSTOMER);
                     isExit = false;
-                }
-                else {
+                } else
+                {
                     System.out.println("Khách hàng có hợp đồng không thể xoá");
                 }
             }
@@ -221,22 +226,26 @@ public class CustomerImplement implements ICustomer
         boolean check = true;
         for (Customer customer : customerList)
         {
-            if (customer.getCustomerName().contains(inputName)){
+            if (customer.getCustomerName().contains(inputName))
+            {
                 customer.displayCustomer();
                 check = false;
             }
         }
-        if (check){
+        if (check)
+        {
             System.out.println("Khong tim thay ID muon tim");
         }
     }
+
     public void readContract()
     {
-        Customer isCustomer = customerList.stream().filter(customer -> customer.getCustomerId()== user.getUserId()).findFirst().orElse(null);
-        if (isCustomer==null){
+        Customer isCustomer = customerList.stream().filter(customer -> customer.getCustomerId() == user.getUserId()).findFirst().orElse(null);
+        if (isCustomer == null)
+        {
             System.out.println("Bạn chưa có hop dong nào, Rất mong được hợp tác trong tương lai");
-        }
-        else{
+        } else
+        {
             contractList.stream().filter(contract -> contract.getCustomerId() == isCustomer.getCustomerId()).forEach(Contract::displayContract);
 
         }
@@ -245,11 +254,12 @@ public class CustomerImplement implements ICustomer
     public void readProject()
     {
         //Xem du an
-        Customer isCustomer = customerList.stream().filter(customer -> customer.getCustomerId()== user.getUserId()).findFirst().orElse(null);
-        if (isCustomer==null){
+        Customer isCustomer = customerList.stream().filter(customer -> customer.getCustomerId() == user.getUserId()).findFirst().orElse(null);
+        if (isCustomer == null)
+        {
             System.out.println("Bạn chưa có dự án nào, Rất mong được hợp tác trong tương lai");
-        }
-        else{
+        } else
+        {
             List<Contract> listContractCurrent = contractList.stream().filter(contract -> contract.getCustomerId() == isCustomer.getCustomerId()).toList();
             List<Project> listProjectCurrent = new ArrayList<>();
             for (Contract contract : listContractCurrent)

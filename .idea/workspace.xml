@@ -5,23 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5374ac8-99bd-4ee0-ba0e-5d1ceb4239c6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ra/business/implement/test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ra/business/IGeneric/ICustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/IGeneric/ICustomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ra/business/IGeneric/IProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/IGeneric/IProject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/IGeneric/IContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/IGeneric/IContract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/config/InputMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/config/InputMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/config/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/config/Role.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/entity/Contract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/entity/Contract.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/entity/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/entity/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/entity/Department.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/entity/Employee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/entity/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/entity/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/entity/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/entity/Users.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/implement/AdminImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/implement/AdminImplement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/implement/ContractImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/implement/ContractImplement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/implement/CustomerImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/implement/CustomerImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/implement/DepartmentImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/implement/DepartmentImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/implement/EmployeeImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/implement/EmployeeImplement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/implement/ProjectImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/implement/ProjectImplement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/implement/UsersImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/implement/UsersImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/data/currentuser.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/currentuser.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/data/customer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/customer.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/data/department.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/department.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/data/user.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/user.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/run/menuUser/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/menuUser/AdminMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/run/menuUser/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/menuUser/CustomerMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/run/menuUser/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/menuUser/MainMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/run/menuUser/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/menuUser/ManagerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ra/run/menuUser/UserMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/menuUser/CustomerMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +64,8 @@
     "Application.UserManager.executor": "Run",
     "Application.Users.executor": "Run",
     "Application.fhasfkhas.executor": "Run",
+    "Application.test.executor": "Run",
+    "Application.test2.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -111,9 +122,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ra.business.implement.test" />
+      <module name="CRM-Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ra.business.implement.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ra.business.implement.test2" />
+      <module name="CRM-Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ra.business.implement.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainMenu" />
+        <item itemvalue="Application.test" />
+        <item itemvalue="Application.test2" />
         <item itemvalue="Application.fhasfkhas" />
         <item itemvalue="Application.Users" />
       </list>
@@ -153,7 +192,9 @@
       <workItem from="1712797412344" duration="31837000" />
       <workItem from="1712883210075" duration="11018000" />
       <workItem from="1712894972773" duration="3961000" />
-      <workItem from="1712902101189" duration="25685000" />
+      <workItem from="1712902101189" duration="26018000" />
+      <workItem from="1712939187612" duration="628000" />
+      <workItem from="1712975924651" duration="27488000" />
     </task>
     <servers />
   </component>
@@ -175,29 +216,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ra/business/entity/Department.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/ra/business/implement/CustomerImplement.java</url>
-          <line>108</line>
+          <line>110</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/ra/business/implement/CustomerImplement.java</url>
-          <line>62</line>
+          <line>64</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/ra/business/implement/ProjectImplement.java</url>
-          <line>136</line>
+          <line>145</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ra/business/implement/AdminImplement.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

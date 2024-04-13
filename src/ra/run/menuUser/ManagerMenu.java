@@ -2,10 +2,7 @@ package ra.run.menuUser;
 
 import ra.business.config.InputMethods;
 import ra.business.entity.Contract;
-import ra.business.implement.ContractImplement;
-import ra.business.implement.CustomerImplement;
-import ra.business.implement.EmployeeImplement;
-import ra.business.implement.ProjectImplement;
+import ra.business.implement.*;
 
 public class ManagerMenu
 {
@@ -15,13 +12,20 @@ public class ManagerMenu
         CustomerImplement customerImplement = new CustomerImplement();
         ContractImplement contractImplement = new ContractImplement();
         ProjectImplement projectImplement = new ProjectImplement();
-
+        DepartmentImplement departmentImplement = new DepartmentImplement();
+//  System.out.println("┏-------------------------\u001B[34m WELCOME ❤️\u001B[32m --------------------------┓");
+//            System.out.println("|  Bạn đã có tài khoản ?        |" +  "  Bạn chưa có tài khoản?       | ");
+//            System.out.println("|  1.Đăng Nhập ◀️               |" +  "  2.Đăng ký ◀️                 | ");
+//            System.out.println("┗---------------------------------------------------------------┛\u001B[34m");
+//            System.out.println("0. Thoát");
         byte choice;
+        boolean isExit = true;
         do {
-            System.out.println("-------------------------- MANAGER ----------------------------");
+            System.out.println("\u001B[32m┏----------------------------\u001B[34m MANAGER \u001B[32m -------------------------┓");
             System.out.println("|  1.Quản lý nhân viên          |" +  "  2.Quản lý khách hàng         | ");
             System.out.println("|  3.Quản lý hợp đồng           |" +  "  4.Quản lý dự án              | ");
-            System.out.println("---------------------------------------------------------------");
+            System.out.println("|  5.Quản lý phòng ban          |" +  "  6.Đăng xuất                  | ");
+            System.out.println("┗---------------------------------------------------------------┛\u001B[34m");
             System.out.println("0. Thoát");
             System.out.print("Mời bạn nhập lựa chọn :");
             choice = InputMethods.getByte();
@@ -39,24 +43,29 @@ public class ManagerMenu
                     projectManager(projectImplement);
                     break;
                 case 5:
+                    departmentMenu(departmentImplement);
+                    UsersImplement.logout();
+                    isExit=false;
+                case 6:
+                    UsersImplement.logout();
                     return;
                 case 0:
-                    System.exit(0);
+                    isExit = false;
                     break;
                 default:
                     System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
                     break;
             }
-        } while (true);
+        } while (isExit);
     }
     public static void employeeManager(EmployeeImplement employeeImplement){
         byte choice;
         do {
-            System.out.println("-------------------------- QUẢN LÝ NHÂN VIÊN ----------------------------");
+            System.out.println("\u001B[32m┏--------------------------\u001B[34m QUẢN LÝ NHÂN VIÊN\u001B[32m --------------------------┓");
             System.out.println("|  1.Thêm mới tài khoản           |" +  " 2. Xem danh sách tài khoản          | ");
             System.out.println("|  3.Cập nhật thông tin tài khoản |" +  " 4. Xoá nhân viên                    | ");
             System.out.println("|  5.Tìm kiếm theo tên            |" +  " 6. Quay lại                         | ");
-            System.out.println("--------------------------------------------------------------------------");
+            System.out.println("┗----------------------------------------------------------  -----------┛\u001B[34m");
             System.out.println("0. Thoát");
             System.out.print("Mời bạn nhập lựa chọn :");
             choice = InputMethods.getByte();
@@ -91,7 +100,7 @@ public class ManagerMenu
         byte choice;
         do {
             System.out.println("-------------------------- QUẢN LÝ HỢP ĐỒNG ----------------------------");
-            System.out.println("|  1.Thêm mới tài khoản           |" +  " 2. Xem danh sách                    | ");
+            System.out.println("|  1.Thêm mới hợp đồng            |" +  " 2. Xem danh sách                    | ");
             System.out.println("|  3.Cập nhật thông tin           |" +  " 4. Xoá                              | ");
             System.out.println("|  5.Tìm kiếm theo tên            |" +  " 6. Quay lại                         | ");
             System.out.println("--------------------------------------------------------------------------");
@@ -165,7 +174,7 @@ public class ManagerMenu
         byte choice;
         do
         {
-            System.out.println("-------------------------- QUẢN LÝ KHÁCH HÀNG ----------------------------");
+            System.out.println("┏------------------------- QUẢN LÝ KHÁCH HÀNG ----------------------------");
             System.out.println("|  1.Thêm mới                     |" + " 2. Xem danh sách                    | ");
             System.out.println("|  3.Cập nhật thông tin           |" + " 4. Xoá                              | ");
             System.out.println("|  5.Tìm kiếm theo tên            |" + " 6. Quay lại                         | ");
@@ -189,6 +198,47 @@ public class ManagerMenu
                     break;
                 case 5:
                     customerImplement.findCustomerByName();
+                    break;
+                case 6:
+                    return;
+                case 0:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
+                    break;
+            }
+        } while (true);
+    }
+
+
+
+
+    public static void departmentMenu(DepartmentImplement departmentImplement){
+        byte choice;
+        do
+        {
+            System.out.println("-------------------------- QUẢN LÝ PHÒNG BAN ----------------------------");
+            System.out.println("|  1.Thêm mới                     |" + " 2. Xem danh sách                    | ");
+            System.out.println("|  3.Cập nhật thông tin           |" + " 4. Xoá                              | ");
+            System.out.println("|  5.                             |" + " 6. Quay lại                         | ");
+            System.out.println("--------------------------------------------------------------------------");
+            System.out.println("0. Thoát");
+            System.out.print("Mời bạn nhập lựa chọn :");
+            choice = InputMethods.getByte();
+            switch (choice)
+            {
+                case 1:
+                    departmentImplement.create();
+                    break;
+                case 2:
+                    departmentImplement.read();
+                    break;
+                case 3:
+                    departmentImplement.update();
+                    break;
+                case 4:
+                    departmentImplement.delete();
                     break;
                 case 6:
                     return;

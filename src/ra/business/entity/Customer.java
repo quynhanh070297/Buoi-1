@@ -4,12 +4,13 @@ import ra.business.config.InputMethods;
 import ra.business.implement.DepartmentImplement;
 import ra.business.implement.EmployeeImplement;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Comparator;
 
 import static ra.business.implement.CustomerImplement.customerList;
 
-public class Customer
+public class Customer implements Serializable
 {
    private Integer customerId;
    private String customerName;

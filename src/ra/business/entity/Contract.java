@@ -4,6 +4,7 @@ import ra.business.config.InputMethods;
 import ra.business.implement.CustomerImplement;
 import ra.business.implement.EmployeeImplement;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
@@ -12,7 +13,7 @@ import static ra.business.implement.ContractImplement.contractList;
 import static ra.business.implement.CustomerImplement.customerList;
 import static ra.business.implement.EmployeeImplement.employeeList;
 
-public class Contract
+public class Contract implements Serializable
 {
     private Integer contractId;
     private String contractName;
@@ -130,7 +131,8 @@ public class Contract
     {
         this.priority = priority;
     }
-    public void  inputContract()
+
+    public void inputContract()
     {
         this.contractId = getInputIdContract();
         System.out.println("Moi ban nhap ten hop dong");
@@ -158,21 +160,23 @@ public class Contract
         // Khách hàng cấp 3 : VIP - 2 khách hàng có tổng tiền dự án lớn nhất
         // Khách hàng cấp 2 : Triển Vọng - Khách hàng có tổng tiền/ tổng tiền trung bình
         // Khách hàng cấp 1 : Tiềm năng - Khách còn lại
-        contractList.sort((o1,o2)->Double.compare(o1.getTotalAmount(),o2.getTotalAmount()));
+        contractList.sort((o1, o2) -> Double.compare(o1.getTotalAmount(), o2.getTotalAmount()));
         // Sắp xếp theo Comparerator => Sort theo tổng tiền.
-        contractList.getLast().setPriority((byte)3);
-        contractList.get(contractList.size()-2).setPriority((byte)3);
+        contractList.getLast().setPriority((byte) 3);
+        contractList.get(contractList.size() - 2).setPriority((byte) 3);
         // Set 2 thằng cuối cùng có độ ưu tiên bằng 3.
         //Biến Mid là biến ở giữa.
-        int mid = contractList.size()/2;
-        for (int i = 0; i <= contractList.size()-3; i++)
+        int mid = contractList.size() / 2;
+        for (int i = 0; i <= contractList.size() - 3; i++)
         {
-            if (i<mid){
+            if (i < mid)
+            {
                 //nhỏ hơn Mid thì độ ưu tiên bằng 1
-                contractList.get(i).setPriority((byte)1);
-            }else {
+                contractList.get(i).setPriority((byte) 1);
+            } else
+            {
                 //Lớn hơn Mid thì độ ưu tiên bằng 2
-                contractList.get(i).setPriority((byte)2);
+                contractList.get(i).setPriority((byte) 2);
             }
         }
     }
@@ -182,25 +186,31 @@ public class Contract
     {
         employeeList.forEach(Employee::displayEmployee);
         System.out.println("Mời bạn nhập ID Nhân viên phụ trách ");
-        while (true){
-            int inputId = InputMethods.getInteger();
-        for (Employee employee : employeeList)
+        while (true)
         {
-            if (employee.getEmployeeId()==inputId){
-                return employee.getEmployeeId();
+            int inputId = InputMethods.getInteger();
+            for (Employee employee : employeeList)
+            {
+                if (employee.getEmployeeId() == inputId)
+                {
+                    return employee.getEmployeeId();
+                }
             }
+            System.out.println("Nhap sai moi nhap lai");
         }
-            System.out.println("Nhap sai moi nhap lai");}
     }
+
     private Integer getInputCustomerId()
     {
         customerList.forEach(Customer::displayCustomer);
         System.out.println("Mời bạn nhập ID Nhân viên phụ trách ");
-        while (true){
+        while (true)
+        {
             int inputId = InputMethods.getInteger();
             for (Customer customer : customerList)
             {
-                if (customer.getCustomerId()==inputId){
+                if (customer.getCustomerId() == inputId)
+                {
                     return customer.getCustomerId();
                 }
             }
@@ -209,7 +219,8 @@ public class Contract
     }
 
 
-    public void  displayContract() {
+    public void displayContract()
+    {
         System.out.printf("===============Contract===============\n" +
                         "| Contract ID: %-20d|\n" +
                         "| Contract Name: %-20s|\n" +
@@ -224,9 +235,10 @@ public class Contract
                 expiryDate, totalAmount, description, priority);
     }
 
-    public Integer getInputIdContract(){
+    public Integer getInputIdContract()
+    {
         int max = contractList.stream().mapToInt(Contract::getContractId).max().orElse(0);
-        return max+1;
+        return max + 1;
     }
 
 }

@@ -15,10 +15,13 @@ import static ra.business.implement.EmployeeImplement.employeeList;
 
 public class ProjectImplement implements IProject
 {
-    public static List<Project> projectList ;
-    static {
+    public static List<Project> projectList;
+
+    static
+    {
         projectList = IOFile.readObjectFromFile(IOFile.PATH_PROJECT);
     }
+
     @Override
     public void read()
     {
@@ -32,25 +35,29 @@ public class ProjectImplement implements IProject
     {
         System.out.println("Mời bạn nhập vào số Dự án ban muốn thêm");
         byte quantity = InputMethods.getByte();
-        for (int i = 0; i < quantity; i++) {
+        for (int i = 0; i < quantity; i++)
+        {
             Project project = new Project();
             project.inputProject();
             projectList.add(project);
-
+        }
     }
-}
 
     @Override
     public void update()
     {
         boolean isExit = true;
-        while (isExit) {
+        while (isExit)
+        {
             System.out.println("Mời bạn nhập vào ID muốn sửa");
             int inputIdUpdate = InputMethods.getInteger();
-            if (finByID(inputIdUpdate) == null) {
+            if (finByID(inputIdUpdate) == null)
+            {
                 System.out.println("id bạn nhập vào chưa đúng");
-            } else {
-                while (isExit) {
+            } else
+            {
+                while (isExit)
+                {
                     System.out.println("Chọn trường bạn cần sửa :\n" +
                             "|1: Tên Dự Án           |\n" +
                             "|2: ID hợp đồng         |\n" +
@@ -61,10 +68,11 @@ public class ProjectImplement implements IProject
                             "|7: Trạng thái          |\n" +
                             "|8: Miêu tả             |\n" +
                             "|9: Công nghệ sư dụng   |\n" +
-                            "|0: Thoát               |")    ;
+                            "|0: Thoát               |");
                     System.out.println("mời bạn chọn");
                     byte choice = InputMethods.getByte();
-                    switch (choice) {
+                    switch (choice)
+                    {
                         case 1:
                             System.out.println("Mời bạn nhập tên dự án mới :");
                             finByID(inputIdUpdate).setProjectName(InputMethods.getString());
@@ -125,12 +133,13 @@ public class ProjectImplement implements IProject
         {
             for (Employee employee : employeeList)
             {
-                if (InputMethods.getInteger()==employee.getEmployeeId()){
+                if (InputMethods.getInteger() == employee.getEmployeeId())
+                {
                     return employee.getEmployeeId();
                 }
             }
             System.out.println("Nhap sai moi nhap lai");
-        }while (true);
+        } while (true);
     }
 
     private String updateNewProjectId()
@@ -142,12 +151,13 @@ public class ProjectImplement implements IProject
         {
             for (Project project : projectList)
             {
-                if (InputMethods.getInteger()==project.getProjectId()){
+                if (InputMethods.getInteger() == project.getProjectId())
+                {
                     return project.getProjectName();
                 }
             }
             System.out.println("Nhap sai moi nhap lai");
-        }while (true);
+        } while (true);
     }
 
 
@@ -155,18 +165,21 @@ public class ProjectImplement implements IProject
     public void delete()
     {
 
-        boolean isExit= true;
+        boolean isExit = true;
         read();
-        while (isExit){
+        while (isExit)
+        {
             System.out.println("Mời bạn nhập vào ID muốn xóa");
             int idDelete = InputMethods.getInteger();
 
-            if (finByID(idDelete)==null){
+            if (finByID(idDelete) == null)
+            {
                 System.out.println("Id bạn nhập vào chưa đúng");
-            }else {
-                    projectList.remove(finByID(idDelete));
-                    IOFile.writeObjectToFile(projectList,IOFile.PATH_PROJECT);
-                    isExit = false;
+            } else
+            {
+                projectList.remove(finByID(idDelete));
+                IOFile.writeObjectToFile(projectList, IOFile.PATH_PROJECT);
+                isExit = false;
             }
         }
     }
@@ -174,7 +187,7 @@ public class ProjectImplement implements IProject
     @Override
     public Project finByID(Integer integer)
     {
-        return projectList.stream().filter(project -> project.getProjectId()==integer).findFirst().orElse(null);
+        return projectList.stream().filter(project -> project.getProjectId() == integer).findFirst().orElse(null);
     }
 
     @Override
@@ -185,20 +198,22 @@ public class ProjectImplement implements IProject
 
         System.out.println("Mời bạn nhập IDProject bạn muốn update trạng thái");
         int updateId = InputMethods.getInteger();
-        boolean isExit= true;
+        boolean isExit = true;
         read();
-        while (isExit){
+        while (isExit)
+        {
             for (Project project : projectList)
             {
-                if (project.getProjectId()==updateId){
+                if (project.getProjectId() == updateId)
+                {
                     System.out.println("Mời nhập trạng thái muốn update: ");
-                   project.setStatus(InputMethods.getBoolean());
+                    project.setStatus(InputMethods.getBoolean());
                     System.out.println("Update thành công !");
                     isExit = false;
                 }
             }
             System.out.println("Không tồn tại ID, hoặc nhập sai ID");
-            }
         }
+    }
 
 }

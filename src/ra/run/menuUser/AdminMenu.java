@@ -15,16 +15,17 @@ public class AdminMenu
         boolean isExit = true;
         byte choice;
         do {
-            System.out.println("-------------------------- ADMIN ----------------------------");
-            System.out.println("|  1.Quản trị tài khoản         |" +  "  2.Báo cáo thống kê         | ");
-            System.out.println("|  3.Đăng xuất ?                |" +  "  4.Quay lại ?               | ");
-            System.out.println("|  5.Đổi mật khẩu?              |" +  "  0.Thoát ?                  | ");
-            System.out.println("---------------------------------------------------------------");
+            System.out.println("┏-------------------------- ADMIN ------------------------------┓");
+            System.out.println("|  1.Quản trị tài khoản         |" +  "  2.Báo cáo thống kê           | ");
+            System.out.println("|  3.Đăng xuất ?                |" +  "  4.Quay lại ?                 | ");
+            System.out.println("|  5.Đổi mật khẩu?              |" +  "  0.Thoát ?                    | ");
+            System.out.println("┗---------------------------------------------------------------┛");
             System.out.print("Mời bạn nhập lựa chọn :");
             choice = InputMethods.getByte();
             switch (choice) {
                 case 1:
-                    acountManager(usersImplement);
+                    acountManager(usersImplement,adminImplement);
+
                     break;
                 case 2:
                     reportList(adminImplement);
@@ -48,13 +49,13 @@ public class AdminMenu
             }
         } while (isExit);
     }
-    public static void acountManager(UsersImplement usersImplement){
+    public static void acountManager(UsersImplement usersImplement, AdminImplement adminImplement){
         byte choice;
         do {
-            System.out.println("-------------------------- QUẢN TRI TÀI KHOAN ----------------------------");
-            System.out.println("|  1.Thêm mới tài khoản           |" +  " 2. Xem danh sách tài khoản          | ");
-            System.out.println("|  3.Khoá mở tài khoản            |" +  " 4.Quay lại                          | ");
-            System.out.println("--------------------------------------------------------------------------");
+            System.out.println("┏------------------ QUẢN TRI TÀI KHOAN -------------------------┓");
+            System.out.println("|  1.Thêm mới tài khoản         |" +  " 2. Xem danh sách tài khoản    | ");
+            System.out.println("|  3.Khoá mở tài khoản          |" +  " 4.Quay lại                    | ");
+            System.out.println("┗---------------------------------------------------------------┛");
             System.out.println("0. Thoát");
             System.out.print("Mời bạn nhập lựa chọn :");
             choice = InputMethods.getByte();
@@ -65,9 +66,11 @@ public class AdminMenu
                 case 2:
                     usersImplement.read();
                     break;
-                case 0:
-                    System.exit(0);
+                case 3:
+                    adminImplement.openOrBlockUser();
                     break;
+                case 0:
+                    return;
                 default:
                     System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
                     break;
@@ -75,13 +78,13 @@ public class AdminMenu
         } while (true);
     }
     public static void reportList(AdminImplement adminImplement ){
+        boolean isExit = true;
         byte choice;
         do {
-            System.out.println("--------------------------  BÁO CÁO THỐNG KÊ   ----------------------------");
-            System.out.println("|1.Thống kê số lượng khách hàng      |" +  " 2. Thống kê số lượng hợp đồng       | ");
+            System.out.println("┏--------------------------  BÁO CÁO THỐNG KÊ   ----------------------------┓");
+            System.out.println("|1.Thống kê số lượng khách hàng      |" +  " 2.Thống kê số lượng hợp đồng        | ");
             System.out.println("|3.Xem danh sách dự án theo hợp đồng |" +  " 4.Quay lại                          | ");
-            System.out.println("--------------------------------------------------------------------------");
-            System.out.println("0. Thoát");
+            System.out.println("┗---------------------------------------------------------------------------┛");
             System.out.print("Mời bạn nhập lựa chọn :");
             choice = InputMethods.getByte();
             switch (choice) {
@@ -95,15 +98,12 @@ public class AdminMenu
                     adminImplement.displayProjectByContract();
                     break;
                 case 4:
-                    return;
-                case 0:
-                    System.exit(0);
-                    break;
+                    isExit = false;
                 default:
                     System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
                     break;
             }
-        } while (true);
+        } while (isExit);
     }
 
 }

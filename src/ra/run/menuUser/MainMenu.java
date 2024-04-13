@@ -32,12 +32,13 @@ public class MainMenu
         if (user!=null)  checkRoleUser(user);
         byte choice;
         do {
-            System.out.println("-------------------------- Welcome ----------------------------");
-            System.out.println("|  Bạn đã có tài khoản ?        |" +  "  Bạn chưa có tài khoản?     | ");
-            System.out.println("|  1.Đăng Nhập ?                |" +  "  2.Đăng ký?                 | ");
-            System.out.println("---------------------------------------------------------------");
+            System.out.println("\u001B[32m");
+            System.out.println("┏-------------------------\u001B[34m WELCOME ❤️\u001B[32m --------------------------┓");
+            System.out.println("|  Bạn đã có tài khoản ?        |" +  "  Bạn chưa có tài khoản?       | ");
+            System.out.println("|  1.Đăng Nhập ◀️               |" +  "  2.Đăng ký ◀️                 | ");
+            System.out.println("┗---------------------------------------------------------------┛\u001B[34m");
             System.out.println("0. Thoát");
-            System.out.print("Mời bạn nhập lựa chọn :");
+            System.out.print("Mời bạn nhập lựa chọn :\u001B[38m");
             choice = InputMethods.getByte();
             switch (choice) {
                 case 1:
@@ -58,18 +59,23 @@ public class MainMenu
 
     public static void longIn (){
         do{
-            System.out.println("-------------------LOGIN------------------");
-            System.out.println("| Nhap username :");
+            System.out.println("\u001B[32m┏--------------------------\u001B[34m LOGIN ✌ \u001B[32m----------------------------┓");
+            System.out.println("| Nhap username :                                               |");
+            System.out.println("┗---------------------------------------------------------------┛\u001B[34m");
+
             String username  = InputMethods.getString();
-            System.out.println("| Nhap password :");
+            System.out.println("\u001B[32m┏--------------------------\u001B[34m LOGIN ✌ \u001B[32m----------------------------┓");
+            System.out.println("| Nhap passwork :                                               |");
+            System.out.println("┗---------------------------------------------------------------┛\u001B[34m");
             String password  = InputMethods.getString();
             Users userLogin = usersImplement.login(username,password);
            if (userLogin==null){
-            System.err.println("Tai khoan hoac mat khau khong chinh xac");
-            System.out.println("1. Tiep tuc dang nhap");
-            System.out.println("2. Ban chua co tai khoan, Dang ky ngay");
-            System.out.println("3. Thoat");
-            System.out.println("------Nhap lua chon--------");
+            System.err.println(" Tài khoản hoặc mật khẩu không chính xác 🤦 ");
+            System.out.println("\u001B[32m┏-------------------------- \u001B[34mLOGIN ✌ \u001B[32m----------------------------┓");
+            System.out.println("| 1.Tiếp tục đăng nhập       | 2. Đăng ký Tài khoản  ◀️         |");
+            System.out.println("| 3.Trở lại                  | 4. Thoát                  ️      |");
+            System.out.println("┗---------------------------------------------------------------┛\u001B[34m");
+            System.out.println("------ Nhập lựa chọn --------");
            byte choice = InputMethods.getByte();
             switch (choice){
                case 1:
@@ -81,7 +87,7 @@ public class MainMenu
                 case 3:
                     return;
                 default:
-                   System.err.println("nhap lua chon ko chinh xac");
+                   System.err.println("Nhập lựa chọn không chính xác ❌");
             }
         }else {
             checkRoleUser(userLogin);
@@ -97,7 +103,7 @@ public class MainMenu
             AdminMenu.adminManager();
         }else if (userLogin.getRole().equals(Role.ROLE_USER)){
             if (!userLogin.isStatus()){
-                System.err.println("Tai khoan da bi khoa, vui long lien he admin (09837465263)");
+                System.err.println("Tài khoản đã bị khoá ❌,vui lòng liên hệ ADMIN (09837465263)");
             }else {
                 user = userLogin;
                 currentUser.add(user);
@@ -105,10 +111,13 @@ public class MainMenu
                 CustomerMenu.customerManager(customerImplement);
             }
         }else {
+            if (!userLogin.isStatus()){
+                System.err.println("Tài khoản đã bị khoá ❌,vui lòng liên hệ ADMIN (09837465263)");
+            }else {
             user = userLogin;
             currentUser.add(user);
             IOFile.writeObjectToFile(currentUser,IOFile.CURRENT_USER_PATH);
-            ManagerMenu.roleManager();
+            ManagerMenu.roleManager();}
         }
 
     }

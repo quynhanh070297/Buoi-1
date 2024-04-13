@@ -31,6 +31,7 @@ public class UsersImplement implements IUsers
     // Hàm chọn dùng chung cho tất cả
 
     public static List<Users> userList;
+
     static
     {
 
@@ -87,7 +88,7 @@ public class UsersImplement implements IUsers
             Users user = new Users();
             user.inputUser();
             userList.add(user);
-            IOFile.writeObjectToFile(userList,IOFile.USER_PATH);
+            IOFile.writeObjectToFile(userList, IOFile.USER_PATH);
         }
     }
 
@@ -125,8 +126,8 @@ public class UsersImplement implements IUsers
                         case 2:
                             finByID(inputIdUpdate).setPassword(InputMethods.getString());
                             break;
-                       case 3:
-                           // finByID(inputIdUpdate).setRole();
+                        case 3:
+                            // finByID(inputIdUpdate).setRole();
                             break;
                         case 4:
                             finByID(inputIdUpdate).setStatus(InputMethods.getBoolean());
@@ -157,7 +158,7 @@ public class UsersImplement implements IUsers
             } else
             {
                 userList.remove(finByID(IDDelete));
-                IOFile.writeObjectToFile(projectList,IOFile.PATH_PROJECT);
+                IOFile.writeObjectToFile(projectList, IOFile.PATH_PROJECT);
             }
         }
     }

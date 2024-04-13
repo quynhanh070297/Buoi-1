@@ -13,7 +13,7 @@ import static ra.business.implement.CustomerImplement.customerList;
 import static ra.business.implement.ProjectImplement.projectList;
 import static ra.business.implement.UsersImplement.userList;
 
-public class  AdminImplement  implements IAdmin
+public class AdminImplement implements IAdmin
 {
     @Override
     public void addUser()
@@ -41,23 +41,28 @@ public class  AdminImplement  implements IAdmin
 
         System.out.println("Mời bạn nhập ID Người dùng bạn muốn update trạng thái");
         int updateId = InputMethods.getInteger();
-        boolean isExit= true;
-        while (isExit){
+        boolean isExit = true;
             for (Users users : userList)
             {
-                if (users.getUserId()==updateId){
+                if (users.getUserId() == updateId)
+                {
                     System.out.println("Mời nhập trạng thái muốn update: ");
                     users.setStatus(InputMethods.getBoolean());
                     System.out.println("Update thành công !");
+                    IOFile.writeObjectToFile(userList,IOFile.USER_PATH);
                     isExit = false;
+                    break;
                 }
             }
-            System.out.println("Không tồn tại ID, hoặc nhập sai ID");
-        }
+            if (isExit){
+                System.out.println("Không tồn tại ID, hoặc nhập sai ID");
+            }
     }
+
     @Override
     public void statisticsCustomers()
     {
+
         System.out.println("So khach hang hien tai la :" + customerList.size());
     }
 
@@ -74,7 +79,7 @@ public class  AdminImplement  implements IAdmin
         for (Contract contract : contractList)
         {
             System.out.println("Hop dong :" + contract.getContractName());
-            projectList.stream().filter(project -> project.getContractId()==contract.getContractId()).forEach(Project::displayProject);
+            projectList.stream().filter(project -> project.getContractId() == contract.getContractId()).forEach(Project::displayProject);
             System.out.println("==================================================================");
         }
     }

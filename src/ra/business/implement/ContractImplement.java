@@ -17,9 +17,12 @@ import static ra.business.implement.UsersImplement.userList;
 public class ContractImplement implements IContract
 {
     public static List<Contract> contractList;
-    static {
+
+    static
+    {
         contractList = IOFile.readObjectFromFile(IOFile.PATH_CONTRACT);
     }
+
     @Override
     public void read()
     {
@@ -33,7 +36,7 @@ public class ContractImplement implements IContract
         Contract contract = new Contract();
         contract.inputContract();
         contractList.add(contract);
-        IOFile.writeObjectToFile(contractList,IOFile.PATH_CONTRACT);
+        IOFile.writeObjectToFile(contractList, IOFile.PATH_CONTRACT);
 
     }
 
@@ -42,14 +45,18 @@ public class ContractImplement implements IContract
     {
 
         boolean isExit = true;
-        while (isExit) {
+        while (isExit)
+        {
             System.out.println("Mời bạn nhập vào ID muốn sửa");
             int inputIdUpdate = InputMethods.getInteger();
-            if (finByID(inputIdUpdate) == null) {
+            if (finByID(inputIdUpdate) == null)
+            {
                 System.out.println("ID bạn nhập vào không tồn tại");
-            } else {
+            } else
+            {
                 boolean isSubMenuExit = true;
-                while (isSubMenuExit) {
+                while (isSubMenuExit)
+                {
                     System.out.println("Chọn trường bạn cần sửa \n" +
                             "| 1 : Priority                     |\n" +
                             "| 2 : Contract Name                |\n" +
@@ -62,7 +69,8 @@ public class ContractImplement implements IContract
                             "| 0 : Thoát                        |");
                     System.out.println("Mời bạn chọn");
                     byte choice = InputMethods.getByte();
-                    switch (choice) {
+                    switch (choice)
+                    {
 
                         case 1:
                             System.out.println("Mời bạn nhập Priority mới :");
@@ -113,12 +121,13 @@ public class ContractImplement implements IContract
             }
             System.out.println("Bạn muốn tiếp tục cập nhật? (Nhập '1' để tiếp tục, '0' để thoát)");
             int continueChoice = InputMethods.getInteger();
-            if (continueChoice == 0) {
+            if (continueChoice == 0)
+            {
                 isExit = false;
             }
 
         }
-        IOFile.writeObjectToFile(contractList,IOFile.PATH_CONTRACT);
+        IOFile.writeObjectToFile(contractList, IOFile.PATH_CONTRACT);
     }
 
     private Integer updateCustomerID()
@@ -130,12 +139,13 @@ public class ContractImplement implements IContract
         {
             for (Customer customer : customerList)
             {
-                if (InputMethods.getInteger()==customer.getCustomerId()){
+                if (InputMethods.getInteger() == customer.getCustomerId())
+                {
                     return customer.getCustomerId();
                 }
             }
             System.out.println("Nhap sai moi nhap lai");
-        }while (true);
+        } while (true);
     }
 
     private Integer updateEmployeeID()
@@ -147,12 +157,13 @@ public class ContractImplement implements IContract
         {
             for (Users users : userList)
             {
-                if (InputMethods.getInteger()==users.getUserId()){
+                if (InputMethods.getInteger() == users.getUserId())
+                {
                     return users.getUserId();
                 }
             }
             System.out.println("Nhap sai moi nhap lai");
-        }while (true);
+        } while (true);
     }
 
     @Override
@@ -161,11 +172,12 @@ public class ContractImplement implements IContract
 
         //Dự án không nên xoá.
     }
+
     @Override
     public Contract finByID(Integer integer)
     {
 
-         return contractList.stream().filter(contract -> contract.getContractId() == integer).findFirst().orElse(null);
+        return contractList.stream().filter(contract -> contract.getContractId() == integer).findFirst().orElse(null);
     }
 
     @Override
@@ -177,13 +189,15 @@ public class ContractImplement implements IContract
         boolean check = false;
         for (Contract contract : contractList)
         {
-            if (contract.getContractName().contains(contractName)){
+            if (contract.getContractName().contains(contractName))
+            {
                 System.out.println("Danh sách hợp dồng");
                 contract.displayContract();
-                check= true;
+                check = true;
             }
         }
-        if (!check){
+        if (!check)
+        {
             System.out.println("Không có hợp đồng muốn tìm");
         }
     }

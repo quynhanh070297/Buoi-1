@@ -8,14 +8,15 @@ public class CustomerMenu
 {
     public static void customerManager(CustomerImplement customerImplement)
     {
+        boolean isExit = true;
         byte choice;
         do {
-            System.out.println("------------------------------- CUSTOMER -------------------------------");
-            System.out.println("|  1.Xem Hợp đồng                 |" +  "  2.Xem dự án                     | ");
-            System.out.println("|  3.Xem thông tin tài khoản      |" +  "  4.Đổi mật khẩu                  | ");
-            System.out.println("|  5.Xem thông tin cá nhân        |" +  "  6.Đăng xuất                     | ");
-            System.out.println("|  7.Tro lai ?                    |" +  "  0. Thoát?                       | ");
-            System.out.println("------------------------------------------------------------------------");
+            System.out.println("┏----------------------------- CUSTOMER ----------------------------┓");
+            System.out.println("|  1.Xem Hợp đồng                 |" +  "  2.Xem dự án                    | ");
+            System.out.println("|  3.Xem thông tin tài khoản      |" +  "  4.Đổi mật khẩu                 | ");
+            System.out.println("|  5.Xem thông tin cá nhân        |" +  "  6.Đăng xuất                    | ");
+            System.out.println("|  7.Tro lai ?                    |" +  "  0. Thoát?                      | ");
+            System.out.println("┗-------------------------------------------------------------------┛");
             System.out.print("Mời bạn nhập lựa chọn :");
             choice = InputMethods.getByte();
             switch (choice) {
@@ -35,9 +36,11 @@ public class CustomerMenu
                     break;
                 case 6:
                     UsersImplement.logout();
+                    isExit = false;
                     break;
                 case 7:
-                    return;
+                    isExit = false;
+                    break;
                 case 0:
                     System.exit(0);
                     break;
@@ -45,7 +48,7 @@ public class CustomerMenu
                     System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
                     break;
             }
-        } while (true);
+        } while (isExit);
     }
     
 }
