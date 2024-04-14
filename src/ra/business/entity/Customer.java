@@ -152,8 +152,8 @@ public class Customer implements Serializable
    }
 
    public void displayCustomer(){
-      System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
-      System.out.printf("|ID : %-3s | Customer Name : %-15s | BirthDay : %-3s | Sex : %-5s | Email : %-10s | Phone Number : %-10s | Note : %-15s | Priority : %-10s |\n",
+      System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+      System.out.printf("|ID : %-3s | Customer Name : %-15s | BirthDay : %-3s | Sex : %-5s | Địa chỉ : %-10s| Email : %-20s | Phone Number : %-10s | Note : %-15s | Priority : %-10s |\n",
               this.customerId, this.customerName, this.birthday,this.sex?"Nam":"Nữ",this.address,this.email, this.phoneNumber,this.note,this.priority);
    }
    public Integer getIdCustomer(){

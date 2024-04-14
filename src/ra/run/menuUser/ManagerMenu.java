@@ -139,7 +139,7 @@ public class ManagerMenu
         do
         {
             System.out.println("------------------------------ QUẢN LÝ DỰ ÁN ------------------------------");
-            System.out.println("|  1.Thêm mới tài khoản           |" + " 2. Hiển thị danh sách               | ");
+            System.out.println("|  1.Thêm mới                     |" + " 2. Hiển thị danh sách               | ");
             System.out.println("|  3.Cập nhật thông tin           |" + " 4. Cập nhật trạng thái              | ");
             System.out.println("|  5.Quay lại                     |" + " 6. Thoát                            | ");
             System.out.println("---------------------------------------------------------------------------");

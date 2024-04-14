@@ -150,8 +150,7 @@ public class Contract implements Serializable
 
         System.out.println("Moi ban nhap mieu ta hop dong");
         this.description = InputMethods.getString();
-
-        this.priority = -1;
+        autoSetPriority();
     }
 
     public void autoSetPriority()
@@ -163,9 +162,12 @@ public class Contract implements Serializable
         contractList.sort((o1, o2) -> Double.compare(o1.getTotalAmount(), o2.getTotalAmount()));
         // Sắp xếp theo Comparerator => Sort theo tổng tiền.
         contractList.getLast().setPriority((byte) 3);
+        if (contractList.size()>5){
         contractList.get(contractList.size() - 2).setPriority((byte) 3);
+        }
         // Set 2 thằng cuối cùng có độ ưu tiên bằng 3.
         //Biến Mid là biến ở giữa.
+        if (contractList.size()>5){
         int mid = contractList.size() / 2;
         for (int i = 0; i <= contractList.size() - 3; i++)
         {
@@ -179,6 +181,13 @@ public class Contract implements Serializable
                 contractList.get(i).setPriority((byte) 2);
             }
         }
+        }
+        else {
+            for (int i = 0; i < contractList.size()-1; i++)
+            {
+                contractList.get(i).setPriority((byte) 1);
+            }
+        }
     }
 
 
@@ -188,15 +197,17 @@ public class Contract implements Serializable
         System.out.println("Mời bạn nhập ID Nhân viên phụ trách ");
         while (true)
         {
+
             int inputId = InputMethods.getInteger();
             for (Employee employee : employeeList)
             {
                 if (employee.getEmployeeId() == inputId)
                 {
-                    return employee.getEmployeeId();
+                   return employee.getEmployeeId();
+
                 }
             }
-            System.out.println("Nhap sai moi nhap lai");
+                System.out.println("Không tìm thấy ID mời nhập lại");
         }
     }
 
@@ -221,18 +232,18 @@ public class Contract implements Serializable
 
     public void displayContract()
     {
-        System.out.printf("===============Contract===============\n" +
-                        "| Contract ID: %-20d|\n" +
-                        "| Contract Name: %-20s|\n" +
-                        "| Employee ID: %-20d|\n" +
-                        "| Customer ID: %-20d|\n" +
-                        "| Created Date: %-20s|\n" +
-                        "| Expiry Date: %-20s|\n" +
-                        "| Total Amount: %-20f|\n" +
-                        "| Description: %-20s|\n" +
-                        "| Priority: %-20d|\n",
+        System.out.printf("===========================Contract==========================\n" +
+                        "| Contract ID:   %-40d|\n" +
+                        "| Contract Name: %-40s|\n" +
+                        "| Employee ID:   %-40d|\n" +
+                        "| Customer ID:   %-40d|\n" +
+                        "| Created Date:  %-40s|\n" +
+                        "| Expiry Date:   %-40s|\n" +
+                        "| Total Amount:  %-40f|\n" +
+                        "| Description:   %-40s|\n" +
+                        "| Priority:      %-40s|\n",
                 contractId, contractName, employeeId, customerId, createdDate,
-                expiryDate, totalAmount, description, priority);
+                expiryDate, totalAmount, description, (priority==1?"Khach hang trien vong":(priority==2?"Khách hàng ưu tiên":"Khách hàng VIP")));
     }
 
     public Integer getInputIdContract()

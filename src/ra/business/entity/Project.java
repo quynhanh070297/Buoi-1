@@ -206,9 +206,9 @@ public class Project implements Serializable
 
     private Integer getInputContractId()
     {
-        System.out.println("Danh sach du an :");
+        System.out.println("Danh sach hop dong :");
         contractList.forEach(Contract::displayContract);
-        System.out.println("Moi nhap ID du an muon chon");
+        System.out.println("Mời nhập ID ");
         int inputId = InputMethods.getInteger();
         return contractList.stream().filter(contract -> contract.getContractId() == inputId).findFirst().orElse(null).getContractId();
     }
@@ -222,20 +222,19 @@ public class Project implements Serializable
 
     public void displayProject()
     {
-        System.out.printf("------------------------------------------------" +
-                        "| Project ID: %-15d|\n" +
-                        "| Project Name: %-15s|\n" +
-                        "| Contract ID: %-15d|\n" +
-                        "| Leader ID: %-15d|\n" +
-                        "| Total Members: %-15d|\n" +
-                        "| Start Date: %-15s|\n" +
-                        "| End Date: %-15s|\n" +
-                        "| Status: %-15s|\n" +
-                        "| Description: %-15s|\n" +
-                        "| Technology: %-15s|\n" +
-                        "------------------------------------------------" +
-
-                        this.projectName, this.projectId, this.projectName, this.contractId, this.leader_id, this.totalMember,
+        System.out.printf("------------------------------------------------\n" +
+                        "| Project ID:       %-15d|\n" +
+                        "| Project Name:     %-15s|\n" +
+                        "| Contract ID:      %-15d|\n" +
+                        "| Leader ID:        %-15d|\n" +
+                        "| Total Members:    %-15d|\n" +
+                        "| Start Date:       %-15s|\n" +
+                        "| End Date:         %-15s|\n" +
+                        "| Status:           %-15s|\n" +
+                        "| Description:      %-15s|\n" +
+                        "| Technology:       %-15s|\n" +
+                        "------------------------------------------------\n",
+                this.projectId, this.projectName, this.contractId, this.leader_id, this.totalMember,
                 this.startDate, this.endDate, this.status ? "Active" : "Waiting", this.description, this.technology);
     }
 

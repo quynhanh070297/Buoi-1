@@ -63,8 +63,8 @@ public class Department implements Serializable
 
     public void displayDepartment()
     {
-        System.out.println("----------------------------------------------");
-        System.out.printf("|ID : %-3s | Department Name %-15s  |\n", departmentId, departmentName);
+        System.out.println("-------------------------------------------------------------------------------------------------------");
+        System.out.printf("|ID : %-3s | Department Name %-15s  | Description %-15s  |\n", departmentId, departmentName,description);
     }
 
     private Integer getInputDepartmentId(List<Department> departmentList)

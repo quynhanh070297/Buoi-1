@@ -94,7 +94,7 @@ public class Users implements Serializable
 
     public void displayUser()
     {
-        System.out.println("---------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------");
         System.out.printf("|ID : %-3s | Name : %-15s | Quyen User : %-15s | Trang thai : %-5s |\n",
                 userId, username, role, status ? "Hoat Dong" : "Khong Hoat dong");
     }
@@ -165,15 +165,15 @@ public class Users implements Serializable
         // Mac dinh la User
         System.out.println("Mời bạn nhập lựa chọn:");
         System.out.println("1. ADMIN");
-        System.out.println("2. Quản lý  :");
-        System.out.println("3. Khách hàng");
+        System.out.println("2. Quản lý");
+        System.out.println("3. User");
         int option = InputMethods.getInteger();
         if (option == 1 || option == 2)
         {
             Role checkRoleUser = checkRole();
             if (checkRoleUser == null)
             {
-                System.out.println("mã không đúng,yêu cầu không đăng nhập trái phép");
+                System.out.println("Mã không đúng,yêu cầu không đăng nhập trái phép");
                 System.exit(0);
             } else
             {
@@ -185,8 +185,8 @@ public class Users implements Serializable
 
     private Role checkRole()
     {
-        System.out.println("quyền này cần mã để thực thi");
-        System.out.println("mời bạn nhập mã");
+        System.out.println("Quyền này cần mã để thực thi");
+        System.out.println("Mời bạn nhập mã");
         int option = InputMethods.getInteger();
         return switch (option)
         {

@@ -9,6 +9,10 @@ import ra.data.IOFile;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import static ra.business.implement.ContractImplement.contractList;
+import static ra.business.implement.EmployeeImplement.employeeList;
 
 public class DepartmentImplement implements IDepartment
 {
@@ -38,6 +42,7 @@ public class DepartmentImplement implements IDepartment
             Department department = new Department();
             department.inputDepartment();
             departmentList.add(department);
+            IOFile.writeObjectToFile(departmentList,IOFile.PATH_DEPARTMENT);
         }
 
     }
@@ -48,6 +53,7 @@ public class DepartmentImplement implements IDepartment
         boolean isExit = true;
         while (isExit)
         {
+            departmentList.forEach(Department::displayDepartment);
             System.out.println("Mời bạn nhập vào ID muốn sửa");
             int inputIdUpdate = InputMethods.getInteger();
             if (finByID(inputIdUpdate) == null)
@@ -76,6 +82,7 @@ public class DepartmentImplement implements IDepartment
                             System.out.println("Cập nhật thành công");
                             break;
                         case 0:
+                            IOFile.writeObjectToFile(departmentList,IOFile.PATH_DEPARTMENT);
                             isExit = false;
                             break;
                         default:
@@ -89,9 +96,7 @@ public class DepartmentImplement implements IDepartment
     @Override
     public void delete()
     {
-        while (true)
-        {
-            System.out.println("Mời bạn nhập vào ID muốn xóa");
+        System.out.println("Mời bạn nhập vào ID muốn xóa");
             int IDDelete = InputMethods.getInteger();
 
             if (finByID(IDDelete) == null)
@@ -99,10 +104,13 @@ public class DepartmentImplement implements IDepartment
                 System.out.println("Id bạn nhập vào chưa đúng");
             } else
             {
+                if (employeeList.stream().anyMatch(contract -> contract.getDepartmentId().equals(finByID(IDDelete).getDepartmentId()))){
+                    System.out.println("Không thể xoá phòng ban đã có nhân viên");
+                }else{
                 departmentList.remove(finByID(IDDelete));
+                System.out.println("Xoa thanh cong");
+                IOFile.writeObjectToFile(departmentList,IOFile.PATH_DEPARTMENT);}
             }
-        }
-
     }
 
     @Override
@@ -110,7 +118,7 @@ public class DepartmentImplement implements IDepartment
     {
         for (Department department : departmentList)
         {
-            if (inputId == department.getDepartmentId())
+            if (Objects.equals(inputId, department.getDepartmentId()))
             {
                 return department;
             }

@@ -196,7 +196,7 @@ public final class InputMethods
     {
         while (true)
         {
-            System.out.println("Nhập vào ngày sinh dd/MM/yyyy");
+            System.out.println("Nhập vào ngày dd/MM/yyyy");
             String employeeDateInput = input.nextLine();
             try
             {

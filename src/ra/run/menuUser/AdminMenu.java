@@ -69,7 +69,7 @@ public class AdminMenu
                 case 3:
                     adminImplement.openOrBlockUser();
                     break;
-                case 0:
+                case 4:
                     return;
                 default:
                     System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
@@ -99,6 +99,7 @@ public class AdminMenu
                     break;
                 case 4:
                     isExit = false;
+                    break;
                 default:
                     System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
                     break;

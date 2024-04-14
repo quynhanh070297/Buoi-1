@@ -25,8 +25,15 @@ public class ProjectImplement implements IProject
     @Override
     public void read()
     {
-        System.out.println("Danh sách dự án :");
-        projectList.forEach(Project::displayProject);
+        if (projectList.isEmpty())
+        {
+            System.out.println("Hiện chưa có dự án nào");
+        } else
+        {
+            System.out.println("Danh sách dự án :");
+            projectList.forEach(Project::displayProject);
+
+        }
 
     }
 
@@ -40,84 +47,93 @@ public class ProjectImplement implements IProject
             Project project = new Project();
             project.inputProject();
             projectList.add(project);
+
         }
+        IOFile.writeObjectToFile(projectList,IOFile.PATH_PROJECT);
     }
 
     @Override
     public void update()
     {
-        boolean isExit = true;
-        while (isExit)
+        if (projectList.isEmpty())
         {
-            System.out.println("Mời bạn nhập vào ID muốn sửa");
-            int inputIdUpdate = InputMethods.getInteger();
-            if (finByID(inputIdUpdate) == null)
+            System.out.println("ban chua co du an nao");
+        } else
+        {
+            boolean isExit = true;
+            while (isExit)
             {
-                System.out.println("id bạn nhập vào chưa đúng");
-            } else
-            {
-                while (isExit)
+                System.out.println("Mời bạn nhập vào ID muốn sửa");
+                int inputIdUpdate = InputMethods.getInteger();
+                if (finByID(inputIdUpdate) == null)
                 {
-                    System.out.println("Chọn trường bạn cần sửa :\n" +
-                            "|1: Tên Dự Án           |\n" +
-                            "|2: ID hợp đồng         |\n" +
-                            "|3: ID Leader           |\n" +
-                            "|4: Tổng số nhân viên   |\n" +
-                            "|5: Ngày bắt đầu        |\n" +
-                            "|6: Ngày kết thúc       |\n" +
-                            "|7: Trạng thái          |\n" +
-                            "|8: Miêu tả             |\n" +
-                            "|9: Công nghệ sư dụng   |\n" +
-                            "|0: Thoát               |");
-                    System.out.println("mời bạn chọn");
-                    byte choice = InputMethods.getByte();
-                    switch (choice)
+                    System.out.println("id bạn nhập vào chưa đúng");
+                } else
+                {
+                    while (isExit)
                     {
-                        case 1:
-                            System.out.println("Mời bạn nhập tên dự án mới :");
-                            finByID(inputIdUpdate).setProjectName(InputMethods.getString());
-                            System.out.println("Cập nhật thành công");
-                            break;
-                        case 2:
-                            System.out.println("Mời bạn nhập ID hợp đồng mới :");
-                            finByID(inputIdUpdate).setDescription(updateNewProjectId());
-                            System.out.println("Cập nhật thành công");
-                            break;
-                        case 3:
-                            System.out.println("Mời bạn nhập Leader mới :");
-                            finByID(inputIdUpdate).setLeader_id(updateNewEmployeeId());
-                            System.out.println("Cập nhật thành công");
-                            break;
-                        case 4:
-                            System.out.println("Mời bạn nhập tổng số nhân viên mới :");
-                            finByID(inputIdUpdate).setTotalMember(InputMethods.getInteger());
-                            System.out.println("Cập nhật thành công");
-                            break;
-                        case 5:
-                            System.out.println("Mời bạn nhập ngày bắt đầu mới :");
-                            finByID(inputIdUpdate).setStartDate(InputMethods.getLocalDate());
-                            System.out.println("Cập nhật thành công");
-                            break;
-                        case 6:
-                            System.out.println("Mời bạn nhập ngày kết thúc mới :");
-                            finByID(inputIdUpdate).setEndDate(InputMethods.getLocalDate());
-                            System.out.println("Cập nhật thành công");
-                            break;
-                        case 7:
-                            System.out.println("Mời bạn nhập trạng thái mới :");
-                            finByID(inputIdUpdate).setStatus(InputMethods.getBoolean());
-                            System.out.println("Cập nhật thành công");
-                            break;
-                        case 8:
-                            System.out.println("Mời bạn nhập công nghệ sư dụng mới :");
-                            finByID(inputIdUpdate).setTechnology(InputMethods.getString());
-                            System.out.println("Cập nhật thành công");
-                            break;
-                        case 0:
-                            isExit = false;
-                            break;
-                        default:
-                            System.err.println("lựa chọn sai ");
+                        System.out.println("Chọn trường bạn cần sửa :\n" +
+                                "|1: Tên Dự Án           |\n" +
+                                "|2: ID hợp đồng         |\n" +
+                                "|3: ID Leader           |\n" +
+                                "|4: Tổng số nhân viên   |\n" +
+                                "|5: Ngày bắt đầu        |\n" +
+                                "|6: Ngày kết thúc       |\n" +
+                                "|7: Trạng thái          |\n" +
+                                "|8: Miêu tả             |\n" +
+                                "|9: Công nghệ sư dụng   |\n" +
+                                "|0: Thoát               |");
+                        System.out.println("mời bạn chọn");
+                        byte choice = InputMethods.getByte();
+                        switch (choice)
+                        {
+                            case 1:
+                                System.out.println("Mời bạn nhập tên dự án mới :");
+                                finByID(inputIdUpdate).setProjectName(InputMethods.getString());
+                                System.out.println("Cập nhật thành công");
+                                break;
+                            case 2:
+                                System.out.println("Mời bạn nhập ID hợp đồng mới :");
+                                finByID(inputIdUpdate).setDescription(updateNewProjectId());
+                                System.out.println("Cập nhật thành công");
+                                break;
+                            case 3:
+                                System.out.println("Mời bạn nhập Leader mới :");
+                                finByID(inputIdUpdate).setLeader_id(updateNewEmployeeId());
+                                System.out.println("Cập nhật thành công");
+                                break;
+                            case 4:
+                                System.out.println("Mời bạn nhập tổng số nhân viên mới :");
+                                finByID(inputIdUpdate).setTotalMember(InputMethods.getInteger());
+                                System.out.println("Cập nhật thành công");
+                                break;
+                            case 5:
+                                System.out.println("Mời bạn nhập ngày bắt đầu mới :");
+                                finByID(inputIdUpdate).setStartDate(InputMethods.getLocalDate());
+                                System.out.println("Cập nhật thành công");
+                                break;
+                            case 6:
+                                System.out.println("Mời bạn nhập ngày kết thúc mới :");
+                                finByID(inputIdUpdate).setEndDate(InputMethods.getLocalDate());
+                                System.out.println("Cập nhật thành công");
+                                break;
+                            case 7:
+                                System.out.println("Mời bạn nhập trạng thái mới :");
+                                finByID(inputIdUpdate).setStatus(InputMethods.getBoolean());
+                                System.out.println("Cập nhật thành công");
+                                break;
+                            case 8:
+                                System.out.println("Mời bạn nhập công nghệ sư dụng mới :");
+                                finByID(inputIdUpdate).setTechnology(InputMethods.getString());
+                                System.out.println("Cập nhật thành công");
+                                break;
+                            case 0:
+                                IOFile.writeObjectToFile(projectList, IOFile.PATH_PROJECT);
+                                isExit = false;
+                                break;
+                            default:
+                                System.err.println("lựa chọn sai ");
+                        }
                     }
                 }
             }
@@ -164,22 +180,27 @@ public class ProjectImplement implements IProject
     @Override
     public void delete()
     {
-
-        boolean isExit = true;
-        read();
-        while (isExit)
+        if (projectList.isEmpty())
         {
-            System.out.println("Mời bạn nhập vào ID muốn xóa");
-            int idDelete = InputMethods.getInteger();
+            System.out.println("ban chua co du an nao");
+        } else
+        {
+            boolean isExit = true;
+            read();
+            while (isExit)
+            {
+                System.out.println("Mời bạn nhập vào ID muốn xóa");
+                int idDelete = InputMethods.getInteger();
 
-            if (finByID(idDelete) == null)
-            {
-                System.out.println("Id bạn nhập vào chưa đúng");
-            } else
-            {
-                projectList.remove(finByID(idDelete));
-                IOFile.writeObjectToFile(projectList, IOFile.PATH_PROJECT);
-                isExit = false;
+                if (finByID(idDelete) == null)
+                {
+                    System.out.println("Id bạn nhập vào chưa đúng");
+                } else
+                {
+                    projectList.remove(finByID(idDelete));
+                    IOFile.writeObjectToFile(projectList, IOFile.PATH_PROJECT);
+                    isExit = false;
+                }
             }
         }
     }
@@ -193,27 +214,35 @@ public class ProjectImplement implements IProject
     @Override
     public void updateProjectStatus()
     {
-        System.out.println("Danh sách dự án hiện tại");
-        projectList.forEach(Project::displayProject);
-
-        System.out.println("Mời bạn nhập IDProject bạn muốn update trạng thái");
-        int updateId = InputMethods.getInteger();
-        boolean isExit = true;
-        read();
-        while (isExit)
+        if (projectList.isEmpty())
         {
-            for (Project project : projectList)
+            System.out.println(" Chua co du an nao");
+        }
+        else
+        {
+
+            System.out.println("Danh sách dự án hiện tại");
+            projectList.forEach(Project::displayProject);
+
+            System.out.println("Mời bạn nhập IDProject bạn muốn update trạng thái");
+            int updateId = InputMethods.getInteger();
+            boolean isExit = true;
+            read();
+            while (isExit)
             {
-                if (project.getProjectId() == updateId)
+                for (Project project : projectList)
                 {
-                    System.out.println("Mời nhập trạng thái muốn update: ");
-                    project.setStatus(InputMethods.getBoolean());
-                    System.out.println("Update thành công !");
-                    isExit = false;
+                    if (project.getProjectId() == updateId)
+                    {
+                        System.out.println("Mời nhập trạng thái muốn update: ");
+                        project.setStatus(InputMethods.getBoolean());
+                        System.out.println("Update thành công !");
+                        IOFile.writeObjectToFile(projectList,IOFile.PATH_PROJECT);
+                        isExit = false;
+                    }
                 }
+                System.out.println("Không tồn tại ID, hoặc nhập sai ID");
             }
-            System.out.println("Không tồn tại ID, hoặc nhập sai ID");
         }
     }
-
 }

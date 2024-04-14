@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5374ac8-99bd-4ee0-ba0e-5d1ceb4239c6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ra/business/implement/test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ra/business/IGeneric/IContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/IGeneric/IContract.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/config/InputMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/config/InputMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ra/business/config/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/config/Role.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/entity/Contract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/entity/Contract.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/entity/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/entity/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/entity/Department.java" afterDir="false" />
@@ -22,14 +19,14 @@
       <change beforePath="$PROJECT_DIR$/src/ra/business/implement/DepartmentImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/implement/DepartmentImplement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/implement/EmployeeImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/implement/EmployeeImplement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/implement/ProjectImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/implement/ProjectImplement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ra/business/implement/UsersImplement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/implement/UsersImplement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/data/contract.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/contract.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/data/currentuser.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/currentuser.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/data/customer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/customer.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/data/department.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/department.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/data/employee.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/employee.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/data/project.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/project.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/data/user.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/user.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/run/menuUser/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/menuUser/AdminMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ra/run/menuUser/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/menuUser/CustomerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ra/run/menuUser/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/menuUser/MainMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/run/menuUser/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/menuUser/ManagerMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -194,7 +191,7 @@
       <workItem from="1712894972773" duration="3961000" />
       <workItem from="1712902101189" duration="26018000" />
       <workItem from="1712939187612" duration="628000" />
-      <workItem from="1712975924651" duration="27488000" />
+      <workItem from="1712975924651" duration="51213000" />
     </task>
     <servers />
   </component>
@@ -217,17 +214,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/ra/business/implement/CustomerImplement.java</url>
-          <line>110</line>
+          <line>112</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ra/business/implement/CustomerImplement.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/ra/business/implement/ProjectImplement.java</url>
-          <line>145</line>
+          <line>161</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>

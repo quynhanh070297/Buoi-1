@@ -29,7 +29,6 @@ public class CustomerImplement implements ICustomer
     {
         for (Customer customer : customerList)
         {
-            System.out.println("==================================================");
             customer.displayCustomer();
         }
 
@@ -63,9 +62,13 @@ public class CustomerImplement implements ICustomer
 
     private void creatCustomer()
     {
+        Users users = new Users();
+        users.inputUser();
+        userList.add(users);
         Customer customer = new Customer();
-        customer.inputCustomer(customer.getIdCustomer());
+        customer.inputCustomer(users.getUserId());
         customerList.add(customer);
+        IOFile.writeObjectToFile(userList,IOFile.USER_PATH);
         IOFile.writeObjectToFile(customerList, IOFile.PATH_CUSTOMER);
         System.out.println("Them moi thanh cong");
     }
@@ -100,7 +103,6 @@ public class CustomerImplement implements ICustomer
         {
             if (users.getRole() == Role.ROLE_USER)
             {
-                System.out.println("======================Danh sách người dùng hiện tại============================");
                 users.displayUser();
             }
         }
@@ -215,7 +217,7 @@ public class CustomerImplement implements ICustomer
     @Override
     public Customer finByID(Integer customerID)
     {
-        return customerList.stream().filter(customer -> customer.getCustomerId() == customerID).findFirst().orElse(null);
+        return customerList.stream().filter(customer -> customer.getCustomerId().equals(customerID)).findFirst().orElse(null);
     }
 
     @Override

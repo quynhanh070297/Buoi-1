@@ -23,13 +23,12 @@ public class EmployeeImplement implements IEmployee
     @Override
     public void read()
     {
-        if (employeeList==null){
+        if (employeeList.isEmpty()){
             System.out.println("Danh sách nhân viên trống");
-        }
+        }else {
         System.out.println("Danh sach nhân viên : ");
         employeeList.forEach(Employee::displayEmployee);
-
-    }
+    }}
 
     @Override
     public void create()
@@ -41,12 +40,17 @@ public class EmployeeImplement implements IEmployee
             Employee employee = new Employee();
             employee.inputEmployee();
             employeeList.add(employee);
+            IOFile.writeObjectToFile(employeeList,IOFile.PATH_EMPLOYEE);
+            System.out.println("them moi thanh cong");
         }
     }
 
     @Override
     public void update()
     {
+        if (employeeList.isEmpty()){
+            System.out.println("danh sach trong");
+        }else {
 
         boolean isExit = true;
         while (isExit)
@@ -103,6 +107,8 @@ public class EmployeeImplement implements IEmployee
                             System.out.println("Update Thanh cong");
                             break;
                         case 0:
+                            IOFile.writeObjectToFile(employeeList,IOFile.PATH_EMPLOYEE);
+                            System.out.println("up date thanh cong");
                             isExit = false;
                             break;
                         default:
@@ -112,7 +118,7 @@ public class EmployeeImplement implements IEmployee
             }
         }
 
-    }
+    }}
 
     private Integer updateDepartmentID()
     {
@@ -135,31 +141,39 @@ public class EmployeeImplement implements IEmployee
     @Override
     public void delete()
     {
-        boolean isExit = true;
-        while (isExit)
+        if (employeeList.isEmpty())
         {
-            System.out.println("Mời bạn nhập vào ID muốn xóa");
-            int IDDelete = InputMethods.getInteger();
+            System.out.println("danh sach trong");
+        } else
+        {
+            boolean isExit = true;
+            while (isExit)
+            {
+                employeeList.forEach(Employee::displayEmployee);
+                System.out.println("Mời bạn nhập vào ID muốn xóa");
+                int IDDelete = InputMethods.getInteger();
 
-            if (finByID(IDDelete) == null)
-            {
-                System.out.println("Id bạn nhập vào chưa đúng");
-            } else
-            {
-                employeeList.remove(finByID(IDDelete));
-                isExit = false;
+                if (finByID(IDDelete) == null)
+                {
+                    System.out.println("Id bạn nhập vào chưa đúng");
+                } else
+                {
+                    employeeList.remove(finByID(IDDelete));
+                    IOFile.writeObjectToFile(employeeList, IOFile.PATH_EMPLOYEE);
+                    System.out.println("xoa thanh cong");
+                    isExit = false;
+                }
             }
+
         }
-
     }
-
     @Override
     public Employee finByID(Integer inputId)
     {
 
         for (Employee employee : employeeList)
         {
-            if (inputId == employee.getEmployeeId())
+            if (inputId.equals(employee.getEmployeeId()))
             {
                 return employee;
             }

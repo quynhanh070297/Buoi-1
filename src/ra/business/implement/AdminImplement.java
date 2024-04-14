@@ -76,11 +76,24 @@ public class AdminImplement implements IAdmin
     @Override
     public void displayProjectByContract()
     {
+        System.out.println("Mời bạn nhập ID hợp đồng muốn xem dự án ");
+        int contractId = InputMethods.getInteger();
         for (Contract contract : contractList)
         {
-            System.out.println("Hop dong :" + contract.getContractName());
-            projectList.stream().filter(project -> project.getContractId() == contract.getContractId()).forEach(Project::displayProject);
-            System.out.println("==================================================================");
+            if (contract.getContractId().equals(contractId))
+            {
+                for (Project project : projectList)
+                {
+                    if (project.getContractId().equals(contractId)){
+                        System.out.println("Các dự án thuộc Hợp đồng " + contractId +":");
+                        project.displayProject();
+                    }
+
+                }
+            }
+        }
+        if (contractList.stream().noneMatch(contract->contract.getContractId().equals(contractId))){
+            System.out.println(" Khong co hop dong nao co so ID nay");
         }
     }
 }
