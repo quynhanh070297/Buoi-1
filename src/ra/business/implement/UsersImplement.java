@@ -186,12 +186,17 @@ public class UsersImplement implements IUsers
     // Tao 1 ham xem thong tin hop dong dung chung cho tat ca
     public static void changePassword()
     {
+//        System.out.println("Bạn có chắc chắn muốn đổi mật khẩu : ");
+//        System.out.println("Mời bạn nhập mật khẩu cũ");
+//        String oldPassword = InputMethods.getString();
+//        for (Users users : userList)
+//        {
+//        }
 
         userList.stream().filter(users -> users.getUserId() == user.getUserId())
                 .findFirst().orElse(null).setPassword(BCrypt.hashpw(user.getInputPassword(), BCrypt.gensalt(5)));
         IOFile.writeObjectToFile(userList, IOFile.USER_PATH);
+        System.out.println("Thay đổi thành công");
     }
-
-
 }
 

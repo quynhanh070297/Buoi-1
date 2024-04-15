@@ -18,7 +18,7 @@ public class AdminMenu
             System.out.println("┏-------------------------- ADMIN ------------------------------┓");
             System.out.println("|  1.Quản trị tài khoản         |" +  "  2.Báo cáo thống kê           | ");
             System.out.println("|  3.Đăng xuất ?                |" +  "  4.Quay lại ?                 | ");
-            System.out.println("|  5.Đổi mật khẩu?              |" +  "  0.Thoát ?                    | ");
+            System.out.println("|  5.Đổi mật khẩu?                                              | ");
             System.out.println("┗---------------------------------------------------------------┛");
             System.out.print("Mời bạn nhập lựa chọn :");
             choice = InputMethods.getByte();
@@ -39,9 +39,6 @@ public class AdminMenu
                     break;
                 case 5:
                     UsersImplement.changePassword();
-                    break;
-                case 0:
-                    System.exit(0);
                     break;
                 default:
                     System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");

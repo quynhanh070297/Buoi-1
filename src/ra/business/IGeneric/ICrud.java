@@ -8,6 +8,6 @@ public interface ICrud <E , T>
      void create ();
      void update();
      void delete();
-
      E finByID(T t);
+
 }

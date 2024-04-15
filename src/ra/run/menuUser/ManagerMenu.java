@@ -13,11 +13,6 @@ public class ManagerMenu
         ContractImplement contractImplement = new ContractImplement();
         ProjectImplement projectImplement = new ProjectImplement();
         DepartmentImplement departmentImplement = new DepartmentImplement();
-//  System.out.println("┏-------------------------\u001B[34m WELCOME ❤️\u001B[32m --------------------------┓");
-//            System.out.println("|  Bạn đã có tài khoản ?        |" +  "  Bạn chưa có tài khoản?       | ");
-//            System.out.println("|  1.Đăng Nhập ◀️               |" +  "  2.Đăng ký ◀️                 | ");
-//            System.out.println("┗---------------------------------------------------------------┛\u001B[34m");
-//            System.out.println("0. Thoát");
         byte choice;
         boolean isExit = true;
         do {
@@ -65,7 +60,7 @@ public class ManagerMenu
             System.out.println("|  1.Thêm mới tài khoản           |" +  " 2. Xem danh sách tài khoản          | ");
             System.out.println("|  3.Cập nhật thông tin tài khoản |" +  " 4. Xoá nhân viên                    | ");
             System.out.println("|  5.Tìm kiếm theo tên            |" +  " 6. Quay lại                         | ");
-            System.out.println("┗----------------------------------------------------------  -----------┛\u001B[34m");
+            System.out.println("┗-----------------------------------------------------------------------┛\u001B[34m");
             System.out.println("0. Thoát");
             System.out.print("Mời bạn nhập lựa chọn :");
             choice = InputMethods.getByte();
@@ -87,9 +82,6 @@ public class ManagerMenu
                     break;
                 case 6:
                     return;
-                case 0:
-                    System.exit(0);
-                    break;
                 default:
                     System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
                     break;
@@ -125,9 +117,6 @@ public class ManagerMenu
                     break;
                 case 6:
                     return;
-                case 0:
-                    System.exit(0);
-                    break;
                 default:
                     System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
                     break;
@@ -179,7 +168,6 @@ public class ManagerMenu
             System.out.println("|  3.Cập nhật thông tin           |" + " 4. Xoá                              | ");
             System.out.println("|  5.Tìm kiếm theo tên            |" + " 6. Quay lại                         | ");
             System.out.println("--------------------------------------------------------------------------");
-            System.out.println("0. Thoát");
             System.out.print("Mời bạn nhập lựa chọn :");
             choice = InputMethods.getByte();
             switch (choice)
@@ -201,9 +189,6 @@ public class ManagerMenu
                     break;
                 case 6:
                     return;
-                case 0:
-                    System.exit(0);
-                    break;
                 default:
                     System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
                     break;
@@ -221,9 +206,8 @@ public class ManagerMenu
             System.out.println("-------------------------- QUẢN LÝ PHÒNG BAN ----------------------------");
             System.out.println("|  1.Thêm mới                     |" + " 2. Xem danh sách                    | ");
             System.out.println("|  3.Cập nhật thông tin           |" + " 4. Xoá                              | ");
-            System.out.println("|  5.                             |" + " 6. Quay lại                         | ");
+            System.out.println("|                                 |" + " 6. Quay lại                         | ");
             System.out.println("--------------------------------------------------------------------------");
-            System.out.println("0. Thoát");
             System.out.print("Mời bạn nhập lựa chọn :");
             choice = InputMethods.getByte();
             switch (choice)
@@ -242,9 +226,6 @@ public class ManagerMenu
                     break;
                 case 6:
                     return;
-                case 0:
-                    System.exit(0);
-                    break;
                 default:
                     System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
                     break;
